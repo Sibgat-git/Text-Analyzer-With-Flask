@@ -5,14 +5,22 @@
 <div class="container">
     <h1> Text Analyzer</h1>
 
-   <form action="https://thirtydaysofpython-v1.herokuapp.com/post" method="POST">
+   <form action="{{url_for('post')}}" method="POST">
     <div>
-      <textarea rows="25" name="content" autofocus></textarea>
+      <textarea rows="25" name="content" autofocus>{{content if content}}</textarea>
     </div>
     <div>
       <input type="submit" class="btn" value="Process Text" />
     </div>
     </form>
+
+    {% if word_count is defined %}
+    <div class="results">
+        <h2>Results</h2>
+        <p>Word count: {{word_count}}</p>
+        <p>Character count: {{char_count}}</p>
+    </div>
+    {% endif %}
 </div>
 
 {% endblock %}
